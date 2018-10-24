@@ -2,24 +2,26 @@ package stenzel.tim.dominion;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import stenzel.tim.dominion.Classes.Card;
+import stenzel.tim.dominion.Classes.Erweiterungsset;
+import stenzel.tim.dominion.ListAdapter.ListAdapterCards;
+
 public class ChooseCards extends AppCompatActivity {
 
-    ArrayList<Deck> decks;
+    ArrayList<Erweiterungsset> decks;
     ArrayList<Card> possibleCards, cards;
     ArrayList<Integer> selectedDeckIds, selectedCardIds, randomNumbers, generatedCardIds;
     ArrayList<String> checkboxNames;
@@ -66,10 +68,10 @@ public class ChooseCards extends AppCompatActivity {
         Bundle bundle = intent.getBundleExtra("bundle");
         selectedDeckIds = bundle.getIntegerArrayList("selectedIds");
 
-        decks.add(new Deck(0, "Basis"));
-        decks.add(new Deck(1, "Abenteuer"));
-        decks.add(new Deck(2, "Intrige"));
-        decks.add(new Deck(3, "Empires"));
+        decks.add(new Erweiterungsset(0, "Basis"));
+        decks.add(new Erweiterungsset(1, "Abenteuer"));
+        decks.add(new Erweiterungsset(2, "Intrige"));
+        decks.add(new Erweiterungsset(3, "Empires"));
 
         for (int i = 0; i < decks.size(); i++){
 
@@ -191,7 +193,7 @@ public class ChooseCards extends AppCompatActivity {
 
         for (Card c : cards){
 
-            for (Deck d : decks){
+            for (Erweiterungsset d : decks){
 
                 if (d.isChecked() && c.getDeck().equals(d.getName())){
 

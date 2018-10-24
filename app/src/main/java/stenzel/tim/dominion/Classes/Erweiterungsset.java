@@ -1,14 +1,19 @@
-package stenzel.tim.dominion;
+package stenzel.tim.dominion.Classes;
 
-public class Deck {
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity
+public class Erweiterungsset {
+
+    @PrimaryKey
     private int id;
 
     private String  name;
 
     private boolean checked;
 
-    public Deck(int id, String name) {
+    public Erweiterungsset(int id, String name) {
         this.id = id;
         this.name = name;
     }

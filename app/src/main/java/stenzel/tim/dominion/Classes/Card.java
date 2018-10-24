@@ -1,5 +1,12 @@
-package stenzel.tim.dominion;
+package stenzel.tim.dominion.Classes;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
+
+@Entity(primaryKeys = {"id"},
+        foreignKeys = {@ForeignKey(entity = Erweiterungsset.class, parentColumns = "name", childColumns = "deck")},
+        indices ={@Index(value = "deck")})
 public class Card {
 
     private int id, cost;

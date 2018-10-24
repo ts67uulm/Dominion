@@ -1,31 +1,32 @@
-package stenzel.tim.dominion;
+package stenzel.tim.dominion.ListAdapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ListAdapterDecks extends RecyclerView.Adapter<ListAdapterDecks.MyViewHolder> {
+import androidx.recyclerview.widget.RecyclerView;
+import stenzel.tim.dominion.Classes.Erweiterungsset;
+import stenzel.tim.dominion.R;
 
-    private static ArrayList<Deck> deckList;
+public class ListAdapterErweiterungsset extends RecyclerView.Adapter<ListAdapterErweiterungsset.MyViewHolder> {
+
+    private static ArrayList<Erweiterungsset> erweiterungssetsList;
     private LayoutInflater inflater;
     private Context context;
 
-    public ListAdapterDecks(Context context, ArrayList<Deck> decks) {
+    public ListAdapterErweiterungsset(Context context, ArrayList<Erweiterungsset> erweiterungssets) {
         inflater = LayoutInflater.from(context);
-        deckList = decks;
+        erweiterungssetsList = erweiterungssets;
         this.context = context;
     }
 
     @Override
-    public ListAdapterDecks.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+    public ListAdapterErweiterungsset.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
 
         View view = inflater.inflate(R.layout.list_frag_decks, parent, false);
         MyViewHolder holder = new MyViewHolder(view);
@@ -36,12 +37,12 @@ public class ListAdapterDecks extends RecyclerView.Adapter<ListAdapterDecks.MyVi
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(final ListAdapterDecks.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final ListAdapterErweiterungsset.MyViewHolder holder, int position) {
 
 
         //checkbox
-        holder.checkbox.setText(deckList.get(position).getName());
-        holder.checkbox.setChecked(deckList.get(position).isChecked());
+        holder.checkbox.setText(erweiterungssetsList.get(position).getName());
+        holder.checkbox.setChecked(erweiterungssetsList.get(position).isChecked());
 
         holder.checkbox.setTag(position);
         holder.checkbox.setOnClickListener(new View.OnClickListener() {
@@ -50,12 +51,12 @@ public class ListAdapterDecks extends RecyclerView.Adapter<ListAdapterDecks.MyVi
             public void onClick(View v) {
 
                 Integer pos = (Integer) holder.checkbox.getTag();
-                Toast.makeText(context, deckList.get(pos).getName() + " clicked!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, erweiterungssetsList.get(pos).getName() + " clicked!", Toast.LENGTH_SHORT).show();
 
-                if (deckList.get(pos).isChecked()) {
-                    deckList.get(pos).setChecked(false);
+                if (erweiterungssetsList.get(pos).isChecked()) {
+                    erweiterungssetsList.get(pos).setChecked(false);
                 } else {
-                    deckList.get(pos).setChecked(true);
+                    erweiterungssetsList.get(pos).setChecked(true);
                 }
             }
 
@@ -67,7 +68,7 @@ public class ListAdapterDecks extends RecyclerView.Adapter<ListAdapterDecks.MyVi
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return deckList.size();
+        return erweiterungssetsList.size();
     }
 
 

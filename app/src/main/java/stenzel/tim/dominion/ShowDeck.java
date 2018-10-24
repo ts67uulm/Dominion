@@ -2,14 +2,15 @@ package stenzel.tim.dominion;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
+import stenzel.tim.dominion.Classes.Card;
+import stenzel.tim.dominion.Classes.Erweiterungsset;
 
 public class ShowDeck extends AppCompatActivity {
 
@@ -18,10 +19,10 @@ public class ShowDeck extends AppCompatActivity {
     private Context context;
 
     private ArrayList<Integer> generatedCardIds;
-    ArrayList<Deck> decks;
+    ArrayList<Erweiterungsset> decks;
     ArrayList<Card> generatedCards, cards;
 
-    Button button;
+    Button btnNewGenerate, btnSaveSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class ShowDeck extends AppCompatActivity {
         setContentView(R.layout.activity_show_deck);
 
         textView = findViewById(R.id.show_deck_textview);
+        btnNewGenerate = findViewById(R.id.show_deck_new_btn);
+        btnSaveSet = findViewById(R.id.show_deck_save_btn);
 
         context = ShowDeck.this;
 
@@ -37,24 +40,12 @@ public class ShowDeck extends AppCompatActivity {
         generatedCards = new ArrayList<>();
         cards = new ArrayList<>();
 
-        decks.add(new Deck(0, "Basis"));
-        decks.add(new Deck(1, "Abenteuer"));
-        decks.add(new Deck(2, "Intrige"));
-        decks.add(new Deck(3, "Empires"));
+        decks.add(new Erweiterungsset(0, "Basis"));
+        decks.add(new Erweiterungsset(1, "Abenteuer"));
+        decks.add(new Erweiterungsset(2, "Intrige"));
+        decks.add(new Erweiterungsset(3, "Empires"));
 
-        //Das hier sind Kommentare, die einfach drin lassen:
-        //1. Parameter: Id, die hochzählen und eindeutig sein soll, bei 0 anfangen!
-        //2. Parameter: Kosten zu denen die Karte gekauft wird
-        //3. Parameter: Name der Karte
-        //4. Parameter: Text der Karte (z. B. +1 Aktion)
-        //5. Parameter: Aus welchem Set die Karte ist
-        //Zahlen einfach immer hinschreiben, Text muss in die shift+2 Anführungszeichen
 
-        //Theoretisch braucht man den 4. Parameter nicht (was die Karte dir gibt) weil dir das am Ende
-        //nur einmal kurz angezeigt wird, aber man hat ja eigentlich die Schachtel eh vor sich
-        //Es geht ja im Prinzip nur darum die Namen der Karten zu bekommen
-        //Wenn du denkst, dass es unnötig ist den Text da reinzuschreiben kannst du ihn auch weg lassen
-        //und ich ändere es dann so ab dass der Text am Ende nicht mehr angezeigt wird
 
         cards.add(new Card(0, 2, "Burggraben", "Abwehr", "Basis"));
         cards.add(new Card(1, 2, "Kapelle", "", "Basis"));
