@@ -11,7 +11,6 @@ public class Deck {
     public Deck(int id, String name) {
         this.id = id;
         this.name = name;
-        this.checked = checked;
     }
 
     public int getId() {

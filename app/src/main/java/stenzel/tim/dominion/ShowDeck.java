@@ -7,28 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ShowDeck extends AppCompatActivity {
 
-    /**
+    TextView textView;
+
     private Context context;
 
     private ArrayList<Integer> generatedCardIds;
     ArrayList<Deck> decks;
     ArrayList<Card> generatedCards, cards;
 
-    ListView listView;
-
     Button button;
-
-    //ListAdapterShow listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_deck);
+
+        textView = findViewById(R.id.show_deck_textview);
 
         context = ShowDeck.this;
 
@@ -37,14 +37,10 @@ public class ShowDeck extends AppCompatActivity {
         generatedCards = new ArrayList<>();
         cards = new ArrayList<>();
 
-        //listView = findViewById(R.id.show_listview);
-        //button = findViewById(R.id.show_again_btn);
-
         decks.add(new Deck(0, "Basis"));
         decks.add(new Deck(1, "Abenteuer"));
         decks.add(new Deck(2, "Intrige"));
         decks.add(new Deck(3, "Empires"));
-
 
         //Das hier sind Kommentare, die einfach drin lassen:
         //1. Parameter: Id, die hochzählen und eindeutig sein soll, bei 0 anfangen!
@@ -182,9 +178,15 @@ public class ShowDeck extends AppCompatActivity {
 
         }
 
-        //listAdapter = new ListAdapterShow(context, generatedCards);
-        //listView.setAdapter(listAdapter);
+        textView.setText("" + generatedCards.get(0).getName() + ", " + generatedCards.get(1).getName()
+                + ", " + generatedCards.get(2).getName() + ", " + generatedCards.get(3).getName()
+                + ", " + generatedCards.get(4).getName() + ", " + generatedCards.get(5).getName()
+                + ", " + generatedCards.get(6).getName() + ", " + generatedCards.get(7).getName()
+                + ", " + generatedCards.get(8).getName() + ", " + generatedCards.get(9).getName());
 
+
+
+        /*
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -192,6 +194,6 @@ public class ShowDeck extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
     }
-    **/
 }

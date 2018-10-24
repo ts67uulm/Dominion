@@ -247,15 +247,12 @@ public class ChooseCards extends AppCompatActivity {
 
                 } else if (selectedCardIds.size() == 10) {
 
-                    //alle ausgewählten spielen mit
-                    /*
                     Bundle bundle = new Bundle();
                     bundle.putIntegerArrayList("generatedCardIds", selectedCardIds);
 
                     Intent intent = new Intent(context, ShowDeck.class);
                     intent.putExtra("bundle", bundle);
                     startActivity(intent);
-                     */
                 } else {
 
                     //generate 10 random numbers between 0 and selectedCardIds.size()-1
@@ -306,14 +303,13 @@ public class ChooseCards extends AppCompatActivity {
                         + randomNumbers.get(7) + ", " + randomNumbers.get(8) + ", "
                         + randomNumbers.get(9));
 
-                /*
                 Bundle bundle = new Bundle();
                 bundle.putIntegerArrayList("generatedCardIds", randomNumbers);
 
                 Intent intent = new Intent(context, ShowDeck.class);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
-                */
+
 
             } else {
                 generateRNG(cardIds, randomNumbers);
