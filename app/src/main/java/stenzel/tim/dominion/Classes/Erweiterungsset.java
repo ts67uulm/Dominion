@@ -21,6 +21,18 @@ public class Erweiterungsset {
         this.name = name;
     }
 
+    public static Erweiterungsset[] populateData(){
+
+     return new Erweiterungsset[]{
+             new Erweiterungsset(0, "Basis"),
+            new Erweiterungsset(1, "Abenteuer"),
+            new Erweiterungsset(2, "Intrige"),
+            new Erweiterungsset(3, "Empires"),
+
+     };
+
+    }
+
     public int getId() {
         return id;
     }

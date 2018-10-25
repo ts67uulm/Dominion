@@ -1,8 +1,12 @@
 package stenzel.tim.dominion.DB;
 
+import java.util.List;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 import stenzel.tim.dominion.Classes.Erweiterungsset;
 
 @Dao
@@ -10,6 +14,12 @@ public interface ErweiterungssetDao {
 
     @Insert
     void insertElement(Erweiterungsset e);
+
+    @Insert
+    void insertAll(Erweiterungsset... erweiterungssets);
+
+    @Query("SELECT * FROM erweiterungsset")
+    List<Erweiterungsset> getAllErweiterungssets();
 
     @Delete
     void deleteElement(Erweiterungsset e);

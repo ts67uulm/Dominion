@@ -82,6 +82,7 @@ public class ChooseCards extends AppCompatActivity {
             }
         }
 
+        /*
         cards.add(new Card(0, 2, "Burggraben", "Abwehr", "Basis"));
         cards.add(new Card(1, 2, "Kapelle", "", "Basis"));
         cards.add(new Card(2, 2, "Keller", "", "Basis"));
@@ -187,6 +188,7 @@ public class ChooseCards extends AppCompatActivity {
         cards.add(new Card(102, 0, "Patrizier/Handelsplatz", "", "Empires"));
         cards.add(new Card(103, 0, "Siedler/Emsiges Dorf", "", "Empires"));
         cards.add(new Card(104, 0, "Schlösser", "", "Empires"));
+        */
 
 
         //------------hier unten nichts ändern -------------------------

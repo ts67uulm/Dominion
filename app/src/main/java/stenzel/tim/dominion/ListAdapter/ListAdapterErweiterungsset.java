@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import stenzel.tim.dominion.Classes.Erweiterungsset;
@@ -15,11 +16,11 @@ import stenzel.tim.dominion.R;
 
 public class ListAdapterErweiterungsset extends RecyclerView.Adapter<ListAdapterErweiterungsset.MyViewHolder> {
 
-    private static ArrayList<Erweiterungsset> erweiterungssetsList;
+    private static List<Erweiterungsset> erweiterungssetsList;
     private LayoutInflater inflater;
     private Context context;
 
-    public ListAdapterErweiterungsset(Context context, ArrayList<Erweiterungsset> erweiterungssets) {
+    public ListAdapterErweiterungsset(Context context, List<Erweiterungsset> erweiterungssets) {
         inflater = LayoutInflater.from(context);
         erweiterungssetsList = erweiterungssets;
         this.context = context;

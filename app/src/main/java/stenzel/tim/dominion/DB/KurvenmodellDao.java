@@ -11,6 +11,9 @@ public interface KurvenmodellDao {
     @Insert
     void insertElement(Kurvenmodell k);
 
+    @Insert
+    void insertAll(Kurvenmodell... kurvenmodelle);
+
     @Delete
     void deleteElement(Kurvenmodell k);
 

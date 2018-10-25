@@ -14,16 +14,26 @@ public class Deck {
     @NonNull
     private String name;
 
-    private String cards, category;
+    private String category;
 
     private boolean morePlayers;
 
-    public Deck(int id, String name, String cards, String category, boolean morePlayers) {
+    public Deck(int id, String name, String category, boolean morePlayers) {
         this.id = id;
         this.name = name;
-        this.cards = cards;
         this.category = category;
         this.morePlayers = morePlayers;
+    }
+
+    public static Deck[] populateData() {
+
+        return new Deck[] {
+
+                new Deck(0, "Preset0",  "Profi", false),
+                new Deck(1, "Preset1", "Einsteiger", true)
+
+        };
+
     }
 
     public int getId() {
@@ -40,14 +50,6 @@ public class Deck {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCards() {
-        return cards;
-    }
-
-    public void setCards(String cards) {
-        this.cards = cards;
     }
 
     public String getCategory() {

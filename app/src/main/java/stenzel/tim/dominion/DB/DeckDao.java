@@ -12,6 +12,9 @@ public interface DeckDao {
     @Insert
     void insertElement(Deck d);
 
+    @Insert
+    void insertAll(Deck... decks);
+
     @Delete
     void deleteElement(Deck d);
 

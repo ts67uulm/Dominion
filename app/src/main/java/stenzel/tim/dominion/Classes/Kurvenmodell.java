@@ -22,6 +22,18 @@ public class Kurvenmodell {
         this.cost8Plus = cost8Plus;
     }
 
+    public static Kurvenmodell[] populateData(){
+
+        return new Kurvenmodell[] {
+
+          new Kurvenmodell(0, 1, 2, 3, 3, 1, 0, 0),
+          new Kurvenmodell(1, 1, 3, 3, 2, 1,0, 0)
+
+        };
+
+    }
+
+
     public int getId() {
         return id;
     }
