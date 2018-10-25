@@ -1,15 +1,20 @@
 package stenzel.tim.dominion.Classes;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(primaryKeys = {"id"}, indices = {@Index(value = "name")})
 public class Deck {
 
-    @PrimaryKey
+    @NonNull
     private int id;
 
-    private String name, cards, category;
+    @NonNull
+    private String name;
+
+    private String cards, category;
 
     private boolean morePlayers;
 

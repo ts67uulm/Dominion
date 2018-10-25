@@ -1,14 +1,17 @@
 package stenzel.tim.dominion.Classes;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(primaryKeys = {"id", "name"}, indices = {@Index(value = "name", unique = true)})
 public class Erweiterungsset {
 
-    @PrimaryKey
+    @NonNull
     private int id;
 
+    @NonNull
     private String  name;
 
     private boolean checked;
