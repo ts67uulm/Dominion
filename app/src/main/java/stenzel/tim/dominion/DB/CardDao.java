@@ -18,8 +18,20 @@ public interface CardDao {
     @Insert
     void insertAll(Card... cards);
 
-    @Query("SELECT * FROM card")
+    @Query("SELECT * FROM Card")
     List<Card> getAllCards();
+
+    @Query("SELECT * FROM Card WHERE deck = :deckName")
+    List<Card> getCardsFromCheckedErweiterungsset(String deckName);
+
+    @Query("SELECT * FROM Card WHERE checked = 1")
+    List<Card> getSelectedCards();
+
+    @Query("SELECT * FROM Card WHERE cost = :cost")
+    List<Card> getCardByCost(int cost);
+
+    @Query("UPDATE Card SET checked = :checked WHERE id = :id")
+    void updateCardChecked(int id, boolean checked);
 
     @Delete
     void deleteElement(Card c);

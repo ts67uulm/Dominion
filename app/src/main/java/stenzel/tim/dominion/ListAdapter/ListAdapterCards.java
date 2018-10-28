@@ -7,21 +7,30 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import stenzel.tim.dominion.Classes.Card;
+import stenzel.tim.dominion.DB.AppDatabase;
+import stenzel.tim.dominion.DB.CardDao;
+import stenzel.tim.dominion.DB.ErweiterungssetDao;
 import stenzel.tim.dominion.R;
 
 public class ListAdapterCards extends RecyclerView.Adapter<ListAdapterCards.MyViewHolder> {
 
-    private static ArrayList<Card> cardList;
+    private static List<Card> cardList;
     private LayoutInflater inflater;
     private Context context;
 
-    public ListAdapterCards(Context context, ArrayList<Card> cards) {
+    private AppDatabase db;
+    private CardDao cardDao;
+
+    public ListAdapterCards(Context context, List<Card> cards) {
         inflater = LayoutInflater.from(context);
         cardList = cards;
         this.context = context;
+        db = AppDatabase.getAppDatabase(context);
+        cardDao = db.getCardDao();
     }
 
     @Override
@@ -53,8 +62,10 @@ public class ListAdapterCards extends RecyclerView.Adapter<ListAdapterCards.MyVi
 
                 if (cardList.get(pos).isChecked()) {
                     cardList.get(pos).setChecked(false);
+                    cardDao.updateCardChecked(cardList.get(pos).getId(), false);
                 } else {
                     cardList.get(pos).setChecked(true);
+                    cardDao.updateCardChecked(cardList.get(pos).getId(), true);
                 }
             }
 

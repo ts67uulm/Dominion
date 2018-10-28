@@ -18,8 +18,14 @@ public interface ErweiterungssetDao {
     @Insert
     void insertAll(Erweiterungsset... erweiterungssets);
 
-    @Query("SELECT * FROM erweiterungsset")
+    @Query("SELECT * FROM Erweiterungsset")
     List<Erweiterungsset> getAllErweiterungssets();
+
+    @Query("SELECT * FROM Erweiterungsset WHERE checked = 1")
+    List<Erweiterungsset> getAllCheckedErweiterungssets();
+
+    @Query("UPDATE Erweiterungsset SET checked = :checked WHERE id = :id")
+    void updateEwChecked(int id, boolean checked);
 
     @Delete
     void deleteElement(Erweiterungsset e);

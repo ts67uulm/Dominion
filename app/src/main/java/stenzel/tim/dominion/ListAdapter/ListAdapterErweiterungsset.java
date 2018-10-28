@@ -12,9 +12,14 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import stenzel.tim.dominion.Classes.Erweiterungsset;
+import stenzel.tim.dominion.DB.AppDatabase;
+import stenzel.tim.dominion.DB.ErweiterungssetDao;
 import stenzel.tim.dominion.R;
 
 public class ListAdapterErweiterungsset extends RecyclerView.Adapter<ListAdapterErweiterungsset.MyViewHolder> {
+
+    private AppDatabase db;
+    private ErweiterungssetDao ewDao;
 
     private static List<Erweiterungsset> erweiterungssetsList;
     private LayoutInflater inflater;
@@ -24,6 +29,9 @@ public class ListAdapterErweiterungsset extends RecyclerView.Adapter<ListAdapter
         inflater = LayoutInflater.from(context);
         erweiterungssetsList = erweiterungssets;
         this.context = context;
+
+        db = AppDatabase.getAppDatabase(context);
+        ewDao = db.getErweiterungssetDao();
     }
 
     @Override
@@ -52,12 +60,13 @@ public class ListAdapterErweiterungsset extends RecyclerView.Adapter<ListAdapter
             public void onClick(View v) {
 
                 Integer pos = (Integer) holder.checkbox.getTag();
-                Toast.makeText(context, erweiterungssetsList.get(pos).getName() + " clicked!", Toast.LENGTH_SHORT).show();
 
                 if (erweiterungssetsList.get(pos).isChecked()) {
                     erweiterungssetsList.get(pos).setChecked(false);
+                    ewDao.updateEwChecked(erweiterungssetsList.get(pos).getId(), false);
                 } else {
                     erweiterungssetsList.get(pos).setChecked(true);
+                    ewDao.updateEwChecked(erweiterungssetsList.get(pos).getId(), true);
                 }
             }
 

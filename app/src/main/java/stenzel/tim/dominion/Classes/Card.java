@@ -130,7 +130,16 @@ public class Card {
                 new Card(101, 0, "Katapult/Felsen", "", "","Empires"),
                 new Card(102, 0, "Patrizier/Handelsplatz", "", "","Empires"),
                 new Card(103, 0, "Siedler/Emsiges Dorf", "", "","Empires"),
-                new Card(104, 0, "Schlösser", "", "","Empires")
+                new Card(104, 0, "Schlösser", "", "","Empires"),
+                new Card(105, 0, "Ereignis1", "Ereignis", "","Basis"),
+                new Card(106, 0, "Ereignis2", "Ereignis", "","Intrige"),
+                new Card(107, 0, "Ereignis3", "Ereignis", "","Abenteuer"),
+                new Card(108, 0, "Ereignis4", "Ereignis", "","Empires"),
+                new Card(109, 0, "Landmarker1", "Landmarker", "","Basis"),
+                new Card(110, 0, "Landmarker2", "Landmarker", "","Intrige"),
+                new Card(111, 0, "Landmarker3", "Landmarker", "","Abenteuer"),
+                new Card(112, 0, "Landmarker4", "Landmarker", "","Empires"),
+
         };
     }
 
