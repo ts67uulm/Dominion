@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/show_cards_textview"
+        android:id="@+id/list_frag_show_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

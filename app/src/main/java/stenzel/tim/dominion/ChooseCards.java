@@ -46,7 +46,7 @@ public class ChooseCards extends AppCompatActivity {
     List<Card> allCards, possibleCards, tmpList, tmpList2, selectedCards;
     List<Card> zweier, dreier, vierer, fuenfer, sechser, siebener, achtplus;
     List<Kurvenmodell> kurven;
-    ArrayList<Integer> randomNumbers;
+    ArrayList<Integer> randomNumbers, randomZweier, randomDreier, randomVierer, randomFuenfer, randomSechser, randomSiebener, randomAchtPlus;
     List<Card> landmarker, ereignisse;
     Card generatedEreignis, generatedLandmarker;
     Kurvenmodell kurvenmodell;
@@ -80,6 +80,13 @@ public class ChooseCards extends AppCompatActivity {
         sechser = new ArrayList<>();
         siebener = new ArrayList<>();
         achtplus = new ArrayList<>();
+        randomZweier = new ArrayList<>();
+        randomDreier = new ArrayList<>();
+        randomVierer = new ArrayList<>();
+        randomFuenfer = new ArrayList<>();
+        randomSechser = new ArrayList<>();
+        randomSiebener = new ArrayList<>();
+        randomAchtPlus = new ArrayList<>();
 
         mRecyclerView = findViewById(R.id.choose_cards_recycler_view);
         selectAll = findViewById(R.id.choose_cards_selectAll);
@@ -95,7 +102,7 @@ public class ChooseCards extends AppCompatActivity {
         allCards = cardDao.getAllCards();
 
         //set all cards checked = false
-        allCards = getModel(false);
+        allCards = getModelAll(false);
 
         //find all possible cards
         for (Erweiterungsset e : selectedEws){
@@ -160,7 +167,6 @@ public class ChooseCards extends AppCompatActivity {
 
                     for (Card c : allCards){
 
-                        //TODO hier noch die Abfrage nach Erweiterung falls Manu es will
                         if (c.getType().equals("Ereignis")){
                             ereignisse.add(c);
                         } else if (c.getType().equals("Landmarker")){
@@ -179,7 +185,58 @@ public class ChooseCards extends AppCompatActivity {
 
                     generateCardsWithCurve();
 
-                    generateRNG(selectedCards, randomNumbers);
+                    for (Integer i : randomZweier){
+
+                        randomNumbers.add(zweier.get(i).getId());
+
+                    }
+
+                    for (Integer i : randomDreier){
+
+                        randomNumbers.add(dreier.get(i).getId());
+
+                    }
+
+                    for (Integer i : randomVierer){
+
+                        randomNumbers.add(vierer.get(i).getId());
+
+                    }
+
+                    for (Integer i : randomFuenfer){
+
+                        randomNumbers.add(fuenfer.get(i).getId());
+
+                    }
+
+                    for (Integer i : randomSechser){
+
+                        randomNumbers.add(sechser.get(i).getId());
+
+                    }
+
+                    for (Integer i : randomSiebener){
+
+                        randomNumbers.add(siebener.get(i).getId());
+
+                    }
+
+                    for (Integer i : randomAchtPlus){
+
+                        randomNumbers.add(achtplus.get(i).getId());
+
+                    }
+
+                    Bundle bundle = new Bundle();
+                    bundle.putIntegerArrayList("generatedCardIds", randomNumbers);
+                    bundle.putInt("kurvenmodell", kurvenmodell.getId());
+                    bundle.putInt("landmarker", generatedLandmarker.getId());
+                    bundle.putInt("ereignis", generatedEreignis.getId());
+
+                    Intent intent = new Intent(context, ShowDeck.class);
+                    intent.putExtra("bundle", bundle);
+                    startActivity(intent);
+
                 }
 
             }
@@ -187,6 +244,24 @@ public class ChooseCards extends AppCompatActivity {
     }
 
     private ArrayList<Card> getModel(boolean selected){
+
+        ArrayList<Card> list = new ArrayList<>();
+
+        for (int i = 0; i < possibleCards.size(); i++){
+
+            Card c = possibleCards.get(i);
+            c.setChecked(selected);
+            cardDao.updateCardChecked(possibleCards.get(i).getId(), selected);
+
+            list.add(c);
+
+        }
+
+        return list;
+
+    }
+
+    private ArrayList<Card> getModelAll(boolean selected){
 
         ArrayList<Card> list = new ArrayList<>();
 
@@ -201,6 +276,41 @@ public class ChooseCards extends AppCompatActivity {
         }
 
         return list;
+
+    }
+
+    private void generateEreignis(){
+
+        int min = 0;
+        int max = ereignisse.size();
+
+        Random r = new Random();
+        int r1 = r.nextInt(max - min) + min;
+
+        generatedEreignis = ereignisse.get(r1);
+    }
+
+    private void generateLandmarker(){
+
+        int min = 0;
+        int max = landmarker.size();
+
+        Random r = new Random();
+        int r1 = r.nextInt(max - min) + min;
+
+        generatedLandmarker = landmarker.get(r1);
+
+    }
+
+    private void generateKurvenmodell(){
+
+        int min = 0;
+        int max = kurven.size();
+
+        Random r = new Random();
+        int r1 = r.nextInt(max - min) + min;
+
+        kurvenmodell = kurven.get(r1);
 
     }
 
@@ -226,36 +336,161 @@ public class ChooseCards extends AppCompatActivity {
 
         }
 
-        for (int i = 0; i < kurvenmodell.getCost2(); i++){
-            generateRNG(zweier, randomNumbers);
+        if (kurvenmodell.getCost2() > 0) {
+            generateRNGzweier(zweier.size(), randomZweier);
         }
 
-        for (int i = 0; i < kurvenmodell.getCost3(); i++){
-            generateRNG(dreier, randomNumbers);
+        if (kurvenmodell.getCost3() > 0) {
+            generateRNGdreier(dreier.size(), randomDreier);
         }
 
-        for (int i = 0; i < kurvenmodell.getCost4(); i++){
-            generateRNG(vierer, randomNumbers);
+        if (kurvenmodell.getCost4() > 0) {
+            generateRNGvierer(vierer.size(), randomVierer);
         }
 
-        for (int i = 0; i < kurvenmodell.getCost5(); i++){
-            generateRNG(fuenfer, randomNumbers);
+        if (kurvenmodell.getCost5() > 0) {
+            generateRNGfuenfer(fuenfer.size(), randomFuenfer);
         }
 
-        for (int i = 0; i < kurvenmodell.getCost6(); i++){
-            generateRNG(sechser, randomNumbers);
+        if (kurvenmodell.getCost6() > 0) {
+            generateRNGsechser(sechser.size(), randomSechser);
         }
 
-        for (int i = 0; i < kurvenmodell.getCost7(); i++){
-            generateRNG(siebener, randomNumbers);
+        if (kurvenmodell.getCost7() > 0) {
+            generateRNGsiebener(siebener.size(), randomSiebener);
         }
 
-        for (int i = 0; i < kurvenmodell.getCost8Plus(); i++){
-            generateRNG(achtplus, randomNumbers);
+        if (kurvenmodell.getCost8Plus() > 0) {
+            generateRNGachterPlus(achtplus.size(), randomAchtPlus);
         }
 
     }
 
+
+    private void generateRNGzweier(int size, ArrayList<Integer> rngZweier){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngZweier.size() < kurvenmodell.getCost2()){
+            if (!rngZweier.contains(r1)){
+
+                rngZweier.add(r1);
+                generateRNGzweier(size, rngZweier);
+            }
+        } else {
+            Collections.sort(rngZweier);
+        }
+    }
+
+    private void generateRNGdreier(int size, ArrayList<Integer> rngDreier){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngDreier.size() < kurvenmodell.getCost3()){
+            if (!rngDreier.contains(r1)){
+
+                rngDreier.add(r1);
+                generateRNGdreier(size, rngDreier);
+            }
+        } else {
+            Collections.sort(rngDreier);
+        }
+
+    }
+
+    private void generateRNGvierer(int size, ArrayList<Integer> rngVierer){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngVierer.size() < kurvenmodell.getCost4()){
+            if (!rngVierer.contains(r1)){
+
+                rngVierer.add(r1);
+                generateRNGvierer(size, rngVierer);
+            }
+        } else {
+            Collections.sort(rngVierer);
+        }
+
+    }
+
+    private void generateRNGfuenfer(int size, ArrayList<Integer> rngFuenfer){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngFuenfer.size() < kurvenmodell.getCost5()){
+            if (!rngFuenfer.contains(r1)){
+
+                rngFuenfer.add(r1);
+                generateRNGfuenfer(size, rngFuenfer);
+            }
+        } else {
+            Collections.sort(rngFuenfer);
+        }
+
+    }
+
+    private void generateRNGsechser(int size, ArrayList<Integer> rngSechser){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngSechser.size() < kurvenmodell.getCost6()){
+            if (!rngSechser.contains(r1)){
+
+                rngSechser.add(r1);
+                generateRNGsechser(size, rngSechser);
+            }
+        } else {
+            Collections.sort(rngSechser);
+        }
+
+    }
+
+    private void generateRNGsiebener(int size, ArrayList<Integer> rngSiebener){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngSiebener.size() < kurvenmodell.getCost7()){
+            if (!rngSiebener.contains(r1)){
+
+                rngSiebener.add(r1);
+                generateRNGsiebener(size, rngSiebener);
+            }
+        } else {
+            Collections.sort(rngSiebener);
+        }
+
+    }
+
+    private void generateRNGachterPlus(int size, ArrayList<Integer> rngAchtPlus){
+
+        Random r = new Random();
+        int r1 = r.nextInt(size);
+
+        if (rngAchtPlus.size() < kurvenmodell.getCost8Plus()){
+            if (!rngAchtPlus.contains(r1)){
+
+                rngAchtPlus.add(r1);
+                generateRNGachterPlus(size, rngAchtPlus);
+            }
+        } else {
+            Collections.sort(rngAchtPlus);
+        }
+
+    }
+
+
+
+
+
+
+    /*
     private void generateRNG(List<Card> selCards, ArrayList<Integer> randomNumbers) {
 
         int min = selCards.get(0).getId();
@@ -307,41 +542,7 @@ public class ChooseCards extends AppCompatActivity {
 
 
     }
-
-    private void generateEreignis(){
-
-        int min = 0;
-        int max = ereignisse.size() - 1;
-
-        Random r = new Random();
-        int r1 = r.nextInt(max - min) + min;
-
-        generatedEreignis = ereignisse.get(r1);
-    }
-
-    private void generateLandmarker(){
-
-        int min = 0;
-        int max = landmarker.size() - 1;
-
-        Random r = new Random();
-        int r1 = r.nextInt(max - min) + min;
-
-        generatedLandmarker = landmarker.get(r1);
-
-    }
-
-    private void generateKurvenmodell(){
-
-        int min = 0;
-        int max = kurven.size() - 1;
-
-        Random r = new Random();
-        int r1 = r.nextInt(max - min) + min;
-
-        kurvenmodell = kurven.get(r1);
-
-    }
+    */
 
 
 }

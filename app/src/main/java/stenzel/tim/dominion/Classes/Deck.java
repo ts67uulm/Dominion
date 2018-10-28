@@ -2,10 +2,13 @@ package stenzel.tim.dominion.Classes;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(primaryKeys = {"id"}, indices = {@Index(value = "name")})
+@Entity(primaryKeys = {"id"},
+        foreignKeys = {@ForeignKey(entity = Kurvenmodell.class, parentColumns = "id", childColumns = "kurvenId")},
+        indices = {@Index(value = "name")})
 public class Deck {
 
     @NonNull
@@ -18,19 +21,22 @@ public class Deck {
 
     private boolean morePlayers;
 
-    public Deck(int id, String name, String category, boolean morePlayers) {
+    private int kurvenId;
+
+    public Deck(@NonNull int id, @NonNull String name, String category, boolean morePlayers, int kurvenId) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.morePlayers = morePlayers;
+        this.kurvenId = kurvenId;
     }
 
     public static Deck[] populateData() {
 
         return new Deck[] {
 
-                new Deck(0, "Preset0",  "Profi", false),
-                new Deck(1, "Preset1", "Einsteiger", true)
+                new Deck(0, "Preset0",  "Profi", false, 0),
+                new Deck(1, "Preset1", "Einsteiger", true, 0)
 
         };
 
@@ -66,5 +72,13 @@ public class Deck {
 
     public void setMorePlayers(boolean morePlayers) {
         this.morePlayers = morePlayers;
+    }
+
+    public int getKurvenId() {
+        return kurvenId;
+    }
+
+    public void setKurvenId(int kurvenId) {
+        this.kurvenId = kurvenId;
     }
 }

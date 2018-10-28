@@ -6,14 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import stenzel.tim.dominion.Classes.Card;
 import stenzel.tim.dominion.DB.AppDatabase;
 import stenzel.tim.dominion.DB.CardDao;
-import stenzel.tim.dominion.DB.ErweiterungssetDao;
 import stenzel.tim.dominion.R;
 
 public class ListAdapterCards extends RecyclerView.Adapter<ListAdapterCards.MyViewHolder> {

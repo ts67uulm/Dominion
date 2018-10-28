@@ -15,7 +15,7 @@ import stenzel.tim.dominion.Classes.Deck;
 import stenzel.tim.dominion.Classes.Erweiterungsset;
 import stenzel.tim.dominion.Classes.Kurvenmodell;
 
-@Database(entities = {Card.class, Erweiterungsset.class, Deck.class, Kurvenmodell.class, CCD.class}, version = 7, exportSchema = false)
+@Database(entities = {Card.class, Erweiterungsset.class, Deck.class, Kurvenmodell.class, CCD.class}, version = 9, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -43,9 +43,9 @@ public abstract class AppDatabase extends RoomDatabase {
                             public void run() {
                                 getAppDatabase(context).getErweiterungssetDao().insertAll(Erweiterungsset.populateData());
                                 getAppDatabase(context).getCardDao().insertAll(Card.populateData());
+                                getAppDatabase(context).getKurvenmodellDao().insertAll(Kurvenmodell.populateData());
                                 getAppDatabase(context).getDeckDao().insertAll(Deck.populateData());
                                 getAppDatabase(context).getCCDDao().insertAll(CCD.populateData());
-                                getAppDatabase(context).getKurvenmodellDao().insertAll(Kurvenmodell.populateData());
                             }
                         });
                     }
