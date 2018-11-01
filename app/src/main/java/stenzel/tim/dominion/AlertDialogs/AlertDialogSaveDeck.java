@@ -64,10 +64,10 @@ public class AlertDialogSaveDeck extends AppCompatActivity {
         save = findViewById(R.id.alert_save_deck_save_btn);
 
         morePlayers = false;
-        lessPlayer.setSelected(true);
+        lessPlayer.setChecked(true);
 
         cat = "Einsteiger";
-        beginner.setSelected(true);
+        beginner.setChecked(true);
 
 
         intent = getIntent();

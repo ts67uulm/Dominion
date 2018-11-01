@@ -377,6 +377,8 @@ public class ChooseCards extends AppCompatActivity {
 
                 rngZweier.add(r1);
                 generateRNGzweier(size, rngZweier);
+            } else {
+                generateRNGzweier(size, rngZweier);
             }
         } else {
             Collections.sort(rngZweier);
@@ -392,6 +394,8 @@ public class ChooseCards extends AppCompatActivity {
             if (!rngDreier.contains(r1)){
 
                 rngDreier.add(r1);
+                generateRNGdreier(size, rngDreier);
+            } else {
                 generateRNGdreier(size, rngDreier);
             }
         } else {
@@ -410,6 +414,8 @@ public class ChooseCards extends AppCompatActivity {
 
                 rngVierer.add(r1);
                 generateRNGvierer(size, rngVierer);
+            } else {
+                generateRNGvierer(size, rngVierer);
             }
         } else {
             Collections.sort(rngVierer);
@@ -426,6 +432,8 @@ public class ChooseCards extends AppCompatActivity {
             if (!rngFuenfer.contains(r1)){
 
                 rngFuenfer.add(r1);
+                generateRNGfuenfer(size, rngFuenfer);
+            } else {
                 generateRNGfuenfer(size, rngFuenfer);
             }
         } else {
@@ -444,6 +452,8 @@ public class ChooseCards extends AppCompatActivity {
 
                 rngSechser.add(r1);
                 generateRNGsechser(size, rngSechser);
+            } else {
+                generateRNGsechser(size, rngSechser);
             }
         } else {
             Collections.sort(rngSechser);
@@ -461,6 +471,8 @@ public class ChooseCards extends AppCompatActivity {
 
                 rngSiebener.add(r1);
                 generateRNGsiebener(size, rngSiebener);
+            } else {
+                generateRNGsiebener(size, rngSiebener);
             }
         } else {
             Collections.sort(rngSiebener);
@@ -477,6 +489,8 @@ public class ChooseCards extends AppCompatActivity {
             if (!rngAchtPlus.contains(r1)){
 
                 rngAchtPlus.add(r1);
+                generateRNGachterPlus(size, rngAchtPlus);
+            } else {
                 generateRNGachterPlus(size, rngAchtPlus);
             }
         } else {
