@@ -1,17 +1,21 @@
 package stenzel.tim.dominion.AlertDialogs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import stenzel.tim.dominion.DB.AppDatabase;
+import stenzel.tim.dominion.DB.DeckDao;
 import stenzel.tim.dominion.R;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AlertDialogSaveDeck extends AppCompatActivity {
@@ -24,11 +28,15 @@ public class AlertDialogSaveDeck extends AppCompatActivity {
     private RadioGroup playersGrp, catGrp;
     private Button cancel, save;
     private EditText nameEdit;
+    private TextView error;
 
     private int requestCode;
 
     private String cat;
     private boolean morePlayers;
+
+    private AppDatabase db;
+    private DeckDao deckDao;
 
 
     @Override
@@ -38,6 +46,9 @@ public class AlertDialogSaveDeck extends AppCompatActivity {
 
         context = AlertDialogSaveDeck.this;
 
+        db = AppDatabase.getAppDatabase(context);
+        deckDao = db.getDeckDao();
+
         nameEdit = findViewById(R.id.alert_save_deck_name_edit);
         playersGrp = findViewById(R.id.alert_save_deck_players_grp);
         lessPlayer = findViewById(R.id.alert_save_deck_more_no);
@@ -45,6 +56,9 @@ public class AlertDialogSaveDeck extends AppCompatActivity {
         catGrp = findViewById(R.id.alert_save_deck_cat_grp);
         beginner = findViewById(R.id.alert_save_deck_cat_beginner);
         advanced = findViewById(R.id.alert_save_deck_cat_advanced);
+        error = findViewById(R.id.alert_save_deck_error);
+
+        error.setVisibility(View.INVISIBLE);
 
         cancel = findViewById(R.id.alert_save_deck_cancel_btn);
         save = findViewById(R.id.alert_save_deck_save_btn);
@@ -110,8 +124,14 @@ public class AlertDialogSaveDeck extends AppCompatActivity {
                 String name = nameEdit.getText().toString();
 
                 if (name.equals("")){
-
-                }else {
+                    error.setVisibility(View.VISIBLE);
+                    error.setTextColor(Color.RED);
+                    error.setText("Name darf nicht leer sein.");
+                } else if(deckDao.getDeckByName(name) != null){
+                    error.setVisibility(View.VISIBLE);
+                    error.setTextColor(Color.RED);
+                    error.setText("Name existiert schon.");
+                } else {
 
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("name", name);

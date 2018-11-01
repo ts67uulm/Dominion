@@ -169,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(context, ShowSavedDecks.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_home:
+                intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);

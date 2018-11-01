@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShowSavedDeck">
+
+    <TextView
+        android:id="@+id/show_saved_deck_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"/>
+
+    <TextView
+        android:id="@+id/show_saved_deck_morePlayers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Für mehr als 4 Spieler?"/>
+
+    <TextView
+        android:id="@+id/show_saved_deck_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kategorie"/>
+
+    <TextView
+        android:id="@+id/show_saved_deck_landmarker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Landmarker"/>
+
+    <TextView
+        android:id="@+id/show_saved_deck_ereignis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ereignis"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Karten:"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/show_saved_deck_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+</LinearLayout>

@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -173,13 +176,38 @@ public class ShowDeck extends AppCompatActivity {
                         generatedCards.get(9).getId(), generatedLandmarker.getId(),
                         generatedEreignis.getId()));
 
-                Toast.makeText(context, "CCD gespeichert", Toast.LENGTH_SHORT);
-
+                Toast.makeText(context, "Gespeichert", Toast.LENGTH_SHORT);
             }
             if (resultCode == Activity.RESULT_CANCELED) {
 
             }
         }
     }//onActivityResult
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.actionbar, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_preset:
+                Intent intent = new Intent(context, ShowSavedDecks.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_home:
+                intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

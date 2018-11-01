@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_home"
+        android:title="home"
+        android:icon="@drawable/ic_home_white_24dp"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/action_preset"
         android:title="preset"
         android:icon="@drawable/ic_settings_white_24dp"
