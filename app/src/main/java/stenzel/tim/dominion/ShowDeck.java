@@ -1,11 +1,13 @@
 package stenzel.tim.dominion;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +15,16 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import stenzel.tim.dominion.AlertDialogs.AlertDialogSaveDeck;
+import stenzel.tim.dominion.Classes.CCD;
 import stenzel.tim.dominion.Classes.Card;
-import stenzel.tim.dominion.Classes.Erweiterungsset;
+import stenzel.tim.dominion.Classes.Deck;
 import stenzel.tim.dominion.Classes.Kurvenmodell;
 import stenzel.tim.dominion.DB.AppDatabase;
+import stenzel.tim.dominion.DB.CCDDao;
 import stenzel.tim.dominion.DB.CardDao;
+import stenzel.tim.dominion.DB.DeckDao;
 import stenzel.tim.dominion.DB.KurvenmodellDao;
-import stenzel.tim.dominion.ListAdapter.ListAdapterCards;
 import stenzel.tim.dominion.ListAdapter.ListAdapterShow;
 
 public class ShowDeck extends AppCompatActivity {
@@ -31,6 +36,8 @@ public class ShowDeck extends AppCompatActivity {
     private AppDatabase db;
     private CardDao cardDao;
     private KurvenmodellDao curveDao;
+    private DeckDao deckDao;
+    private CCDDao ccdDao;
 
     private ArrayList<Integer> generatedCardIds;
     private List<Card> generatedCards, allCards;
@@ -65,6 +72,8 @@ public class ShowDeck extends AppCompatActivity {
         db = AppDatabase.getAppDatabase(context);
         cardDao = db.getCardDao();
         curveDao = db.getKurvenmodellDao();
+        deckDao = db.getDeckDao();
+        ccdDao = db.getCCDDao();
 
         generatedCardIds = new ArrayList<>();
         generatedCards = new ArrayList<>();
@@ -83,7 +92,7 @@ public class ShowDeck extends AppCompatActivity {
 
         int landmarkerId = bundle.getInt("landmarker");
         int ereignisId = bundle.getInt("ereignis");
-        int kurvenId = bundle.getInt("kurvenmodell");
+        final int kurvenId = bundle.getInt("kurvenmodell");
         generatedCardIds = bundle.getIntegerArrayList("generatedCardIds");
 
         generatedLandmarker = allCards.get(landmarkerId);
@@ -128,5 +137,49 @@ public class ShowDeck extends AppCompatActivity {
             }
         });
 
+        btnSaveSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(context, AlertDialogSaveDeck.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 0) {
+            if(resultCode == Activity.RESULT_OK){
+                String name = data.getStringExtra("name");
+                boolean morePlayers = data.getBooleanExtra("morePlayers", false);
+                String category = data.getStringExtra("category");
+
+                int id = generatedKurvenmodell.getId();
+
+                deckDao.insertElement(new Deck(0, name, category, morePlayers, id));
+
+                Toast.makeText(context, "Deck gespeichert", Toast.LENGTH_SHORT);
+
+                int deckId = deckDao.getDeckId(name, morePlayers, category, id);
+
+                ccdDao.insertElement(new CCD(deckId, generatedCards.get(0).getId(),
+                        generatedCards.get(1).getId(), generatedCards.get(2).getId(),
+                        generatedCards.get(3).getId(), generatedCards.get(4).getId(),
+                        generatedCards.get(5).getId(), generatedCards.get(6).getId(),
+                        generatedCards.get(7).getId(), generatedCards.get(8).getId(),
+                        generatedCards.get(9).getId(), generatedLandmarker.getId(),
+                        generatedEreignis.getId()));
+
+                Toast.makeText(context, "CCD gespeichert", Toast.LENGTH_SHORT);
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+            }
+        }
+    }//onActivityResult
+
 }

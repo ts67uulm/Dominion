@@ -11,9 +11,9 @@ import androidx.room.Index;
         )
 public class CCD {
 
-    private int deckId, card0, card1, card2, card3, card4, card5, card6, card7, card8, card9;
+    private int deckId, card0, card1, card2, card3, card4, card5, card6, card7, card8, card9, landmarker, ereignis;
 
-    public CCD(int deckId, int card0, int card1, int card2, int card3, int card4, int card5, int card6, int card7, int card8, int card9) {
+    public CCD(int deckId, int card0, int card1, int card2, int card3, int card4, int card5, int card6, int card7, int card8, int card9, int landmarker, int ereignis) {
         this.deckId = deckId;
         this.card0 = card0;
         this.card1 = card1;
@@ -25,14 +25,16 @@ public class CCD {
         this.card7 = card7;
         this.card8 = card8;
         this.card9 = card9;
+        this.landmarker = landmarker;
+        this.ereignis = ereignis;
     }
 
     public static CCD[] populateData(){
 
         return new CCD[]{
-                new CCD(0, 0,1, 2, 3, 4, 5, 6, 7,8, 9),
+                new CCD(1, 0,1, 2, 3, 4, 5, 6, 7,8, 9, 109, 105),
 
-                new CCD(1, 1, 3, 5, 7, 10, 12, 14, 16, 19, 20),
+                new CCD(2, 1, 3, 5, 7, 10, 12, 14, 16, 19, 20, 110, 106),
 
 
         };
@@ -125,5 +127,21 @@ public class CCD {
 
     public void setCard9(int card9) {
         this.card9 = card9;
+    }
+
+    public int getLandmarker() {
+        return landmarker;
+    }
+
+    public void setLandmarker(int landmarker) {
+        this.landmarker = landmarker;
+    }
+
+    public int getEreignis() {
+        return ereignis;
+    }
+
+    public void setEreignis(int ereignis) {
+        this.ereignis = ereignis;
     }
 }

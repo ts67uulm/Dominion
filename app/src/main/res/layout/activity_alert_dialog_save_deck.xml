@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AlertDialogs.AlertDialogSaveDeck">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name des Decks"/>
+
+        <EditText
+            android:id="@+id/alert_save_deck_name_edit"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mit mehr als 4 Personen spielbar?"/>
+
+        <RadioGroup
+            android:id="@+id/alert_save_deck_players_grp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/alert_save_deck_more_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ja"/>
+
+            <RadioButton
+                android:id="@+id/alert_save_deck_more_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nein"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kategorie?"/>
+
+        <RadioGroup
+            android:id="@+id/alert_save_deck_cat_grp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/alert_save_deck_cat_beginner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Einsteiger"/>
+
+            <RadioButton
+                android:id="@+id/alert_save_deck_cat_advanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profi"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/alert_save_deck_cancel_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Abbrechen"/>
+
+        <Button
+            android:id="@+id/alert_save_deck_save_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Speichern"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

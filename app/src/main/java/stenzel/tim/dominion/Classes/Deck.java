@@ -6,12 +6,12 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(primaryKeys = {"id"},
-        foreignKeys = {@ForeignKey(entity = Kurvenmodell.class, parentColumns = "id", childColumns = "kurvenId")},
-        indices = {@Index(value = "name")})
+@Entity(foreignKeys = {@ForeignKey(entity = Kurvenmodell.class, parentColumns = "id", childColumns = "kurvenId")},
+        indices = {@Index(value = "kurvenId")})
 public class Deck {
 
     @NonNull
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     @NonNull
@@ -36,7 +36,7 @@ public class Deck {
         return new Deck[] {
 
                 new Deck(0, "Preset0",  "Profi", false, 0),
-                new Deck(1, "Preset1", "Einsteiger", true, 0)
+                new Deck(0, "Preset1", "Einsteiger", true, 0)
 
         };
 
