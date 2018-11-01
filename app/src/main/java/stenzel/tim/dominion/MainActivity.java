@@ -3,8 +3,12 @@ package stenzel.tim.dominion;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
 
@@ -12,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import stenzel.tim.dominion.Classes.Card;
@@ -85,8 +90,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, ChooseCards.class);
-                startActivity(intent);
+                boolean test = false;
+
+                for (Erweiterungsset e : erweiterungssets){
+
+                    if (e.isChecked()){
+
+                        if (test == false){
+
+                            test = true;
+
+                        }
+                    }
+                }
+
+                if (test){
+                    Intent intent = new Intent(context, ChooseCards.class);
+                    startActivity(intent);
+                } else {
+
+                    Toast.makeText(context, "Sei nicht dumm", Toast.LENGTH_SHORT);
+
+                }
 
             }
         });
@@ -126,6 +151,27 @@ public class MainActivity extends AppCompatActivity {
 
         return list;
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.actionbar, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_preset:
+                Intent intent = new Intent(context, ShowSavedDecks.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 
