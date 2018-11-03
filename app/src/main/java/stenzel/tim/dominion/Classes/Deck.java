@@ -35,8 +35,12 @@ public class Deck {
 
         return new Deck[] {
 
-                new Deck(0, "Preset0",  "Profi", false, 0),
-                new Deck(0, "Preset1", "Einsteiger", true, 0)
+                new Deck(1, "Erstes Spiel",  "Einsteiger", false, 0),
+                new Deck(2, "Verzerrte Größen", "Profi", false, 0),
+                new Deck(3, "Schleichweg", "Profi", false, 0),
+                new Deck(4, "Kunstück", "Profi", false, 0),
+                new Deck(5, "Verbesserung", "Profi", false, 0),
+                new Deck(6, "Silber und Gold", "Profi", false, 0),
 
         };
 

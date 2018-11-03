@@ -106,7 +106,7 @@ public class ShowSavedDeck extends AppCompatActivity {
             ereignisInDeck = allCards.get(ccd.getEreignis());
 
             //set all data in view
-            name.setText(chosenDeck.getName());
+            name.setText("Name: " + chosenDeck.getName());
 
             if (chosenDeck.isMorePlayers()){
                 morePlayers.setText("Für mehr als 4 Spieler geeignet.");
@@ -114,11 +114,11 @@ public class ShowSavedDeck extends AppCompatActivity {
                 morePlayers.setText("Nicht für mehr als 4 Spieler geeignet.");
             }
 
-            category.setText(chosenDeck.getCategory());
+            category.setText("Kategorie: " + chosenDeck.getCategory());
 
-            landmarker.setText(landmarkerInDeck.getName());
+            landmarker.setText("Landmarker: " + landmarkerInDeck.getName());
 
-            ereignis.setText(ereignisInDeck.getName());
+            ereignis.setText("Ereignis: " + ereignisInDeck.getName());
 
             mAdapter = new ListAdapterShowDeck(context, cardsInDeck);
             mRecyclerView.setAdapter(mAdapter);

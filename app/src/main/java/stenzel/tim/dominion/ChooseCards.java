@@ -117,7 +117,7 @@ public class ChooseCards extends AppCompatActivity {
 
                 String type = c.getType();
 
-                if (type.equals("Ereignis") || type.equals("Landmarker")){
+                if (type.equals("Ereignis") || type.equals("Landmarker") || type.equals("LeererLandmarker") || type.equals("LeererLandmarker")){
                 } else {
                     tmpList.add(c);
                 }
@@ -499,11 +499,6 @@ public class ChooseCards extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     /*
     private void generateRNG(List<Card> selCards, ArrayList<Integer> randomNumbers) {
 
@@ -520,9 +515,7 @@ public class ChooseCards extends AppCompatActivity {
                 if (c.getId() == r1){
 
                     randomNumbers.add(r1);
-
                 }
-
             }
 
             if (randomNumbers.size() == 10) {
@@ -544,8 +537,6 @@ public class ChooseCards extends AppCompatActivity {
                 Intent intent = new Intent(context, ShowDeck.class);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
-
-
             } else {
                 generateRNG(selCards, randomNumbers);
             }
@@ -553,10 +544,7 @@ public class ChooseCards extends AppCompatActivity {
         } else {
             generateRNG(selCards, randomNumbers);
         }
-
-
     }
     */
-
 
 }

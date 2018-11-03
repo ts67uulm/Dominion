@@ -32,7 +32,7 @@ import stenzel.tim.dominion.ListAdapter.ListAdapterShow;
 
 public class ShowDeck extends AppCompatActivity {
 
-    private TextView  textView, landmarkerTV, ereignisTV, kurvenTV;
+    private TextView  textView, landmarkerTV, ereignisTV;
 
     private Context context;
 
@@ -65,7 +65,6 @@ public class ShowDeck extends AppCompatActivity {
         textView = findViewById(R.id.show_deck_textview);
         landmarkerTV = findViewById(R.id.show_deck_landmarker);
         ereignisTV = findViewById(R.id.show_deck_ereignis);
-        kurvenTV = findViewById(R.id.show_deck_kurve);
         btnNewGenerate = findViewById(R.id.show_deck_new_btn);
         btnSaveSet = findViewById(R.id.show_deck_save_btn);
         mRecyclerView = findViewById(R.id.show_deck_recycler_view);
@@ -108,18 +107,8 @@ public class ShowDeck extends AppCompatActivity {
 
         }
 
-        landmarkerTV.setText(generatedLandmarker.getName());
-        ereignisTV.setText(generatedEreignis.getName());
-
-        String kurvenText = "Kosten2: " + generatedKurvenmodell.getCost2()
-                + ", Kosten3: " + generatedKurvenmodell.getCost3()
-                + ", Kosten4: " + generatedKurvenmodell.getCost4()
-                + ", Kosten5: " + generatedKurvenmodell.getCost5()
-                + ", Kosten6: " + generatedKurvenmodell.getCost6()
-                + ", Kosten7: " + generatedKurvenmodell.getCost7()
-                + ", Kosten8+: " + generatedKurvenmodell.getCost8Plus();
-
-        kurvenTV.setText("Kurvenmodell: " + kurvenText);
+        landmarkerTV.setText("Landmarker: " + generatedLandmarker.getName());
+        ereignisTV.setText("Ereignis: " + generatedEreignis.getName());
 
         mAdapter = new ListAdapterShow(context, generatedCards);
         mRecyclerView.setAdapter(mAdapter);
