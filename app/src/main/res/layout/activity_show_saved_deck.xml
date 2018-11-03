@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginBottom="5dp"
         android:text="Name"/>
 
@@ -21,6 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Für mehr als 4 Spieler?"/>
 
     <TextView
@@ -29,6 +32,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Kategorie"/>
 
     <TextView
@@ -37,6 +41,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Landmarker"/>
 
     <TextView
@@ -45,6 +50,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Ereignis"/>
 
     <TextView
@@ -52,10 +58,12 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
         android:text="Karten:"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/show_saved_deck_recyclerview"
+        android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
