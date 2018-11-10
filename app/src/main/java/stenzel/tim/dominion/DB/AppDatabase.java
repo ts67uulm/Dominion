@@ -15,7 +15,7 @@ import stenzel.tim.dominion.Classes.Deck;
 import stenzel.tim.dominion.Classes.Erweiterungsset;
 import stenzel.tim.dominion.Classes.Kurvenmodell;
 
-@Database(entities = {Card.class, Erweiterungsset.class, Deck.class, Kurvenmodell.class, CCD.class}, version = 11, exportSchema = false)
+@Database(entities = {Card.class, Erweiterungsset.class, Deck.class, Kurvenmodell.class, CCD.class}, version = 14, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
