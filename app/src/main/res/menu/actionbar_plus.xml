@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_home"
+        android:title="home"
+        android:icon="@drawable/ic_home_white_24dp"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_add"
+        android:title="add"
+        android:icon="@drawable/ic_add_white_24dp"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_preset"
+        android:title="preset"
+        android:icon="@drawable/ic_edit_black_24dp"
+        app:showAsAction="always"/>
+
+</menu>

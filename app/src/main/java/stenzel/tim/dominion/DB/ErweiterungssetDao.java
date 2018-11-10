@@ -24,6 +24,9 @@ public interface ErweiterungssetDao {
     @Query("SELECT * FROM Erweiterungsset WHERE checked = 1")
     List<Erweiterungsset> getAllCheckedErweiterungssets();
 
+    @Query("SELECT * FROM Erweiterungsset WHERE name = :name")
+    Erweiterungsset getErweiterungssetByName(String name);
+
     @Query("UPDATE Erweiterungsset SET checked = :checked WHERE id = :id")
     void updateEwChecked(int id, boolean checked);
 

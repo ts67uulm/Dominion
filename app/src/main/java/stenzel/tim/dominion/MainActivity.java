@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import stenzel.tim.dominion.Classes.Card;
@@ -154,10 +153,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+
+        erweiterungssets = ewDao.getAllErweiterungssets();
+
+        erweiterungssets = getModel(false);
+        mAdapter = new ListAdapterErweiterungsset(context, erweiterungssets);
+        mRecyclerView.setAdapter(mAdapter);
+
+
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar, menu);
+        menuInflater.inflate(R.menu.actionbar_plus, menu);
 
         return true;
     }
@@ -173,6 +185,9 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_add:
+                intent = new Intent(context, GalleryActivity.class);
+                startActivity(intent);
 
         }
 

@@ -28,6 +28,8 @@ public class ShowSavedDecks extends AppCompatActivity {
 
     private List<Deck> allDecks;
 
+    private com.google.android.material.floatingactionbutton.FloatingActionButton fab;
+
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -46,11 +48,21 @@ public class ShowSavedDecks extends AppCompatActivity {
         allDecks = deckDao.getAllDecks();
 
         mRecyclerView = findViewById(R.id.show_saved_decks_recyclerview);
+        fab = findViewById(R.id.show_saved_decks_add_fab);
         mLayoutManager = new LinearLayoutManager(context);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mAdapter = new ListAdapterDecks(context, allDecks);
         mRecyclerView.setAdapter(mAdapter);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AddDeckActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
