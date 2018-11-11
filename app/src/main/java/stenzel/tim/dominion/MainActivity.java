@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         context = MainActivity.this;
 
+        getSupportActionBar().setTitle("Generator");
+
         Stetho.initializeWithDefaults(context);
 
         db = AppDatabase.getAppDatabase(context);

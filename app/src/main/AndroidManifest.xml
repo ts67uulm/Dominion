@@ -21,14 +21,17 @@
         <activity android:name=".ShowSavedDecks" />
         <activity android:name=".ShowSavedDeck" />
         <activity android:name=".GalleryActivity" />
+        <activity android:name=".ShowCardsActivity" />
+        <activity android:name=".AddDeckActivity" />
         <activity
             android:name=".AlertDialogs.AlertDialogSaveDeck"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".AlertDialogs.AddErweiterungsset"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".ShowCardsActivity" />
-        <activity android:name=".AddDeckActivity"></activity>
+        <activity
+            android:name=".AlertDialogs.AddCard"
+            android:theme="@style/Theme.AppCompat.Dialog" />
     </application>
 
 </manifest>

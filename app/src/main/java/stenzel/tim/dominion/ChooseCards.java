@@ -58,6 +58,8 @@ public class ChooseCards extends AppCompatActivity {
 
         context = ChooseCards.this;
 
+        getSupportActionBar().setTitle("Generator");
+
         db = AppDatabase.getAppDatabase(context);
         ewDao = db.getErweiterungssetDao();
         cardDao = db.getCardDao();

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AlertDialogs.AddCard">
+
+    <EditText
+        android:id="@+id/add_card_name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Name"/>
+
+    <EditText
+        android:id="@+id/add_card_cost_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_card_name_edit"
+        android:inputType="number"
+        android:layout_marginBottom="5dp"
+        android:hint="Kosten"/>
+
+    <EditText
+        android:id="@+id/add_card_text_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_card_cost_edit"
+        android:layout_marginBottom="5dp"
+        android:hint="Text"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/add_card_type_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_card_text_edit"
+        android:layout_marginBottom="5dp">
+
+    </androidx.appcompat.widget.AppCompatSpinner>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/add_card_ew_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_card_type_spinner"
+        android:layout_marginBottom="5dp">
+
+    </androidx.appcompat.widget.AppCompatSpinner>
+
+    <TextView
+        android:id="@+id/add_card_errorview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_card_ew_spinner"
+        android:layout_marginBottom="5dp"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/add_card_add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_card_errorview"
+        android:text="Hinzufügen"/>
+
+</RelativeLayout>

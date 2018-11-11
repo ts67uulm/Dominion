@@ -9,6 +9,8 @@ import stenzel.tim.dominion.DB.DeckDao;
 import stenzel.tim.dominion.ListAdapter.ListAdapterDecks;
 import stenzel.tim.dominion.ListAdapter.ListAdapterErweiterungsset;
 
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,6 +44,8 @@ public class ShowSavedDecks extends AppCompatActivity {
 
         context = ShowSavedDecks.this;
 
+        getSupportActionBar().setTitle("Gespeicherte Decks");
+
         db = AppDatabase.getAppDatabase(context);
         deckDao = db.getDeckDao();
 
@@ -55,11 +59,12 @@ public class ShowSavedDecks extends AppCompatActivity {
         mAdapter = new ListAdapterDecks(context, allDecks);
         mRecyclerView.setAdapter(mAdapter);
 
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, AddDeckActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(context, AddDeckActivity.class);
+                //startActivity(intent);
             }
         });
 
@@ -69,7 +74,7 @@ public class ShowSavedDecks extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.actionbar, menu);
+        menuInflater.inflate(R.menu.actionbar_home, menu);
 
         return true;
     }
@@ -77,12 +82,8 @@ public class ShowSavedDecks extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.action_preset:
-                Intent intent = new Intent(context, ShowSavedDecks.class);
-                startActivity(intent);
-                return true;
             case R.id.action_home:
-                intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 return true;
 

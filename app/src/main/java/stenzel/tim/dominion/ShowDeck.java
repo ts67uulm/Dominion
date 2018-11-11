@@ -62,6 +62,8 @@ public class ShowDeck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_deck);
 
+        context = ShowDeck.this;
+
         textView = findViewById(R.id.show_deck_textview);
         landmarkerTV = findViewById(R.id.show_deck_landmarker);
         ereignisTV = findViewById(R.id.show_deck_ereignis);
@@ -69,7 +71,7 @@ public class ShowDeck extends AppCompatActivity {
         btnSaveSet = findViewById(R.id.show_deck_save_btn);
         mRecyclerView = findViewById(R.id.show_deck_recycler_view);
 
-        context = ShowDeck.this;
+        getSupportActionBar().setTitle("Generiertes Deck");
 
         db = AppDatabase.getAppDatabase(context);
         cardDao = db.getCardDao();

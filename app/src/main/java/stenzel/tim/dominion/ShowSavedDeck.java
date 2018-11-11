@@ -52,6 +52,8 @@ public class ShowSavedDeck extends AppCompatActivity {
 
         context = ShowSavedDeck.this;
 
+        getSupportActionBar().setTitle("Karten dieses Decks");
+
         db = AppDatabase.getAppDatabase(context);
         deckDao = db.getDeckDao();
         ccdDao = db.getCCDDao();

@@ -30,6 +30,9 @@ public interface CardDao {
     @Query("SELECT * FROM Card WHERE cost = :cost")
     List<Card> getCardByCost(int cost);
 
+    @Query("SELECT * FROM Card WHERE name = :name")
+    Card getCardByName(String name);
+
     @Query("UPDATE Card SET checked = :checked WHERE id = :id")
     void updateCardChecked(int id, boolean checked);
 

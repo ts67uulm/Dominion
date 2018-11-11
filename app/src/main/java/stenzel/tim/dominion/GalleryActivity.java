@@ -45,6 +45,8 @@ public class GalleryActivity extends AppCompatActivity {
 
         context = GalleryActivity.this;
 
+        getSupportActionBar().setTitle("Gallerie - Erweiterungen");
+
         db = AppDatabase.getAppDatabase(context);
         ewDao = db.getErweiterungssetDao();
 
